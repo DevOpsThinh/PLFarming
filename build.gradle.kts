@@ -1,7 +1,7 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
   alias(libs.plugins.jetbrains.kotlin.jvm)
@@ -16,15 +16,15 @@ repositories {
   mavenCentral()
 }
 
-val mainVerticleName = "com.dev4ever.plfarm.MainVerticle"
-val launcherClassName = "io.vertx.core.Launcher"
+//val mainVerticleName = "com.dev4ever.plfarm.PLFram"
+//val launcherClassName = "io.vertx.core.Launcher"
 
 val watchForChange = "src/**/*"
 val doOnChange = "${projectDir}/gradlew classes"
 
-application {
-  mainClass.set(launcherClassName)
-}
+//application {
+//  mainClass.set(launcherClassName)
+//}
 
 dependencies {
   implementation(platform(libs.io.vertx.stack.depchain))
@@ -49,13 +49,13 @@ dependencies {
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.compilerOptions.jvmTarget = JvmTarget.JVM_21
 
-tasks.withType<ShadowJar> {
-  archiveClassifier.set("fat")
-  manifest {
-    attributes(mapOf("Main-Verticle" to mainVerticleName))
-  }
-  mergeServiceFiles()
-}
+//tasks.withType<ShadowJar> {
+//  archiveClassifier.set("fat")
+//  manifest {
+//    attributes(mapOf("Main-Verticle" to mainVerticleName))
+//  }
+//  mergeServiceFiles()
+//}
 
 tasks.withType<Test> {
   useJUnitPlatform()
@@ -64,6 +64,6 @@ tasks.withType<Test> {
   }
 }
 
-tasks.withType<JavaExec> {
-  args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
-}
+//tasks.withType<JavaExec> {
+//  args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
+//}

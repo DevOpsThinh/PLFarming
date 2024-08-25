@@ -1,6 +1,6 @@
 package com.dev4ever.plfarm
 
-import com.dev4ever.plfarm.webService.PLFarm
+import com.dev4ever.plfarm.webservice.PLFarm
 import io.vertx.core.Vertx
 import io.vertx.junit5.VertxExtension
 import io.vertx.junit5.VertxTestContext

@@ -28,29 +28,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-package com.dev4ever.plfarm.webService
+package com.dev4ever.plfarm.webservice
 
+// <editor-fold desc="ESSENTIAL PACKAGES">
 import io.vertx.core.Vertx
 import io.vertx.ext.web.client.WebClient
 import io.vertx.ext.web.client.WebClientOptions
-import io.vertx.kotlin.coroutines.await
 import io.vertx.kotlin.coroutines.coAwait
 import kotlinx.coroutines.runBlocking
-
-// <editor-fold desc="ESSENTIAL PACKAGES">
 
 // </editor-fold>
 
 fun main() {
+  // Create a Vert.x instance using the vertx() Factory method.
   val vertx = Vertx.vertx()
-
-  vertx.deployVerticle(PLFarm())
+  // Start the PLFarm verticle
+  vertx.deployVerticle("PLFarm")
 
   val client = WebClient.create(
     vertx,
-     WebClientOptions()
-       .setDefaultPort(8888)
-       .setDefaultHost("localhost")
+    WebClientOptions()
+      .setDefaultPort(8888)
+      .setDefaultHost("localhost")
   )
 
   runBlocking {
